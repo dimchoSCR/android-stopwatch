@@ -23,7 +23,6 @@ public class Stopwatch extends Activity {
     private Button lapButton;
     private TextView textView;
     private Timer timer;
-    private View view;
     private LinearLayout linearLayout;
     private int currentTime = 0;
     private int lapTime = 0;
