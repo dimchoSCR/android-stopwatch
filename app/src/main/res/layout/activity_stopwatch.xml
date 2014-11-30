@@ -59,19 +59,6 @@
 
 
         <Button
-            android:id="@+id/btn_stop"
-            style="?android:borderlessButtonStyle"
-            android:layout_width="0sp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_weight="1"
-            android:background="@drawable/btn_stop_states"
-            android:onClick="onSWatchStop"
-            android:text="@string/btn_stop"
-            android:textColor="@android:color/darker_gray"
-            android:visibility="gone" />
-
-        <Button
             android:id="@+id/btn_reset"
             style="?android:borderlessButtonStyle"
             android:layout_width="0sp"
@@ -84,20 +71,6 @@
             android:onClick="onSWatchReset"
             android:text="@string/btn_reset"
             android:textColor="@android:color/darker_gray" />
-
-        <Button
-            android:id="@+id/btn_lap"
-            style="?android:borderlessButtonStyle"
-            android:layout_width="0sp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginLeft="@dimen/button_margin"
-            android:layout_weight="1"
-            android:background="@drawable/btn_lap_states"
-            android:onClick="onSWatchLap"
-            android:text="@string/btn_lap"
-            android:textColor="@android:color/darker_gray"
-            android:visibility="gone" />
 
     </LinearLayout>
 
