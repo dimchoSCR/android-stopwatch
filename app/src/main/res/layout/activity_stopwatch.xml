@@ -58,7 +58,7 @@
             android:textColor="@android:color/white" />
 
         <Button
-            android:id="@+id/btn_reset"
+            android:id="@+id/btn_lap"
             style="?android:borderlessButtonStyle"
             android:layout_width="0sp"
             android:layout_height="wrap_content"
@@ -67,8 +67,8 @@
             android:layout_weight="1"
             android:background="@drawable/btn_reset_states"
             android:enabled="false"
-            android:onClick="onSWatchReset"
-            android:text="@string/btn_reset"
+            android:onClick="onSWatchLap"
+            android:text="@string/btn_lap"
             android:textColor="@android:color/darker_gray" />
 
     </LinearLayout>
