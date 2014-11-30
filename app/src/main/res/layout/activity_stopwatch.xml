@@ -57,7 +57,6 @@
             android:text="@string/btn_start"
             android:textColor="@android:color/white" />
 
-
         <Button
             android:id="@+id/btn_reset"
             style="?android:borderlessButtonStyle"

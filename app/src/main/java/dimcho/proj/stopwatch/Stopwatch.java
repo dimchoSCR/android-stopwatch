@@ -18,16 +18,14 @@ import java.util.TimerTask;
 public class Stopwatch extends Activity {
 
     private Button startButton;
-    private Button stopButton;
     private Button resetButton;
-    private Button lapButton;
     private TextView textView;
     private Timer timer;
     private LinearLayout linearLayout;
     private int currentTime = 0;
     private int lapTime = 0;
-    private boolean sWatchIsStarted;
     private boolean lapViewExists;
+    private boolean isButtonStartPressed;
 
 
     @Override
@@ -36,8 +34,6 @@ public class Stopwatch extends Activity {
         setContentView(R.layout.activity_stopwatch);
 
         startButton = (Button) findViewById(R.id.btn_start);
-        stopButton = (Button) findViewById(R.id.btn_stop);
-        lapButton = (Button) findViewById(R.id.btn_lap);
         resetButton = (Button) findViewById(R.id.btn_reset);
         textView = (TextView) findViewById(R.id.stopwatch_view);
         textView.setTextSize(55);
@@ -74,8 +70,6 @@ public class Stopwatch extends Activity {
 
     public void onSWatchStart(View view) {
 
-        sWatchIsStarted=true;
-
         startButton.setVisibility(View.GONE);
         stopButton.setVisibility(View.VISIBLE);
 
@@ -102,7 +96,6 @@ public class Stopwatch extends Activity {
     }
 
     public void onSWatchStop(View view) {
-        sWatchIsStarted=false;
         stopButton.setVisibility(View.GONE);
         startButton.setVisibility(View.VISIBLE);
 
