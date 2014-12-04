@@ -131,7 +131,6 @@ public class Stopwatch extends Activity {
         if(!isButtonStartPressed){
             onSWatchReset();
         }else {
-
             lapViewExists = true;
             linearLayout = (LinearLayout) findViewById(R.id.layout);
 

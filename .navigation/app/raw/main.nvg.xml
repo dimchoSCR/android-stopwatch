@@ -9,15 +9,15 @@
         className = "dimcho.proj.stopwatch.Stopwatch"/>
       <point      
         x = "800"      
-        y = "160"/>
+        y = "640"/>
     </statePointEntry>
     <statePointEntry>
       <state      
         class = "com.android.tools.idea.editors.navigation.model.MenuState"      
         xmlResourceName = "stopwatch"/>
       <point      
-        x = "1780"      
-        y = "160"/>
+        x = "1760"      
+        y = "480"/>
     </statePointEntry>
   </locations>
 </navigationModel>
