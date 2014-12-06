@@ -124,6 +124,7 @@ public class Stopwatch extends Activity {
         lapButton.setBackgroundResource(R.drawable.btn_reset_states);
 
         if (lapViewExists) {
+            linearLayout.setLayoutTransition(null);
             linearLayout.removeAllViews();
             lapViewExists = false;
         }
