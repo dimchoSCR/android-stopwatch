@@ -1,5 +1,6 @@
 package dimcho.proj.stopwatch;
 
+import android.animation.LayoutTransition;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ public class Stopwatch extends Activity {
     private Button lapButton;
     private TextView textView;
     private Timer timer;
+    private LayoutTransition transition;
     private LinearLayout linearLayout;
     private int currentTime = 0;
     private int lapTime = 0;
@@ -132,7 +134,12 @@ public class Stopwatch extends Activity {
             onSWatchReset();
         }else {
             lapViewExists = true;
+
+            transition = new LayoutTransition();
+            transition.setStartDelay(LayoutTransition.APPEARING,10000);
+
             linearLayout = (LinearLayout) findViewById(R.id.layout);
+            linearLayout.setLayoutTransition(transition);
 
             TextView lapDisplay = new TextView(this);
             ImageView imageView = new ImageView(this);
