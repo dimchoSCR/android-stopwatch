@@ -26,6 +26,7 @@ public class Stopwatch extends Activity {
     private LinearLayout linearLayout;
     private int currentTime = 0;
     private int lapTime = 0;
+    private int lapCounter=0;
     private boolean lapViewExists;
     private boolean isButtonStartPressed = false;
 
@@ -118,6 +119,7 @@ public class Stopwatch extends Activity {
         timer.cancel();
         currentTime = 0;
         lapTime = 0;
+        lapCounter=0;
         textView.setText(TimeFormatUtil.toDisplayString(currentTime));
         lapButton.setEnabled(false);
         lapButton.setText(R.string.btn_lap);
@@ -135,8 +137,10 @@ public class Stopwatch extends Activity {
             onSWatchReset();
         }else {
             lapViewExists = true;
+            lapCounter++;
 
             transition = new LayoutTransition();
+            transition.setAnimator(LayoutTransition.CHANGE_APPEARING,null);
             transition.setStartDelay(LayoutTransition.APPEARING,0);
 
             linearLayout = (LinearLayout) findViewById(R.id.layout);
@@ -144,6 +148,7 @@ public class Stopwatch extends Activity {
 
             TextView lapDisplay = new TextView(this);
             ImageView imageView = new ImageView(this);
+            imageView.setFocusableInTouchMode(true);
 
             lapDisplay.setGravity(Gravity.CENTER);
             lapDisplay.setTextColor(Color.WHITE);
@@ -152,7 +157,9 @@ public class Stopwatch extends Activity {
             linearLayout.addView(lapDisplay);
             linearLayout.addView(imageView);
 
-            lapDisplay.setText(TimeFormatUtil.toDisplayString(lapTime));
+            imageView.requestFocus();
+
+            lapDisplay.setText(String.format("Lap %d: %s", lapCounter, TimeFormatUtil.toDisplayString(lapTime)));
             imageView.setImageResource(R.drawable.divider);
             lapTime = 0;
         }
