@@ -22,14 +22,14 @@
         android:layout_above="@+id/linearLayout"
         android:layout_below="@+id/stopwatch_view"
         android:layout_marginBottom="@dimen/bottom_margin"
-        android:fillViewport="false"
-        android:animateLayoutChanges="true">
+        android:fillViewport="false">
 
         <LinearLayout
             android:id="@+id/layout"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:animateLayoutChanges="true">
 
         </LinearLayout>
 
