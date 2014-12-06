@@ -136,7 +136,7 @@ public class Stopwatch extends Activity {
             lapViewExists = true;
 
             transition = new LayoutTransition();
-            transition.setStartDelay(LayoutTransition.APPEARING,1);
+            transition.setStartDelay(LayoutTransition.APPEARING,0);
 
             linearLayout = (LinearLayout) findViewById(R.id.layout);
             linearLayout.setLayoutTransition(transition);
