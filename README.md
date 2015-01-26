@@ -6,8 +6,6 @@ Stopwatch application for android.
 <table>
   <tr>
     <td>![Screen 1](http://i.imgur.com/5fbqfKl.png)</td>
-  </tr>
-  <tr>
     <td>![Screen 2](http://i.imgur.com/gWFkrWG.png)</td>
   </tr>
 <table>
