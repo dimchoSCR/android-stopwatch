@@ -15,7 +15,7 @@ public class HelpActivity extends ActionBarActivity {
         TextView textView = (TextView) findViewById(R.id.help_message);
 
         textView.setText("Created by Dimcho.\n" +
-                "\nMore information about the app on my gitHub: https://github.com/dimchoSCR/android-stopwatch\n"
+                "\nMore information about the app on: https://github.com/dimchoSCR/android-stopwatch\n"
                 +"\nOr you can send me an email: dimchokarpachev@gmail.com");
 
     }
