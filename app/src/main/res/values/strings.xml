@@ -8,5 +8,6 @@
     <string name="btn_reset">Reset</string>
     <string name="btn_stop">Stop</string>
     <string name="btn_lap">Lap</string>
+    <string name="action_help">Help</string>
 
 </resources>
