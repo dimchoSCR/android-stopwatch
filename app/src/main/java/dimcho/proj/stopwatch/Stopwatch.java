@@ -1,10 +1,10 @@
 package dimcho.proj.stopwatch;
 
 import android.animation.LayoutTransition;
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,7 +17,7 @@ import android.widget.TextView;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Stopwatch extends Activity {
+public class Stopwatch extends ActionBarActivity {
 
     private Button startButton;
     private Button lapButton;
@@ -43,9 +43,8 @@ public class Stopwatch extends Activity {
         textView.setTextSize(55);
     }
 
-/* Handling the configuration change myself because of views inserted
-   during run time.(lapDisplay and imageView)
 
+    /*
     @Override
     public void onSaveInstanceState(Bundle saveInstanceState){
         saveInstanceState.putInt("currentTime", currentTime);
@@ -55,9 +54,9 @@ public class Stopwatch extends Activity {
 
         super.onSaveInstanceState(saveInstanceState);
     }
+
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceSate){
-
         currentTime = savedInstanceSate.getInt("currentTime");
         lapTime = savedInstanceSate.getInt("lapTime");
         lapViewExists = savedInstanceSate.getBoolean("lapViewExists");
@@ -70,7 +69,7 @@ public class Stopwatch extends Activity {
         }
         super.onRestoreInstanceState(savedInstanceSate);
     }
-*/
+    */
 
     public void onSWatchStart(View view) {
         if (isButtonStartPressed) {

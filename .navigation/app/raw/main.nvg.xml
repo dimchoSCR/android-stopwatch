@@ -13,11 +13,19 @@
     </statePointEntry>
     <statePointEntry>
       <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "dimcho.proj.stopwatch.HelpActivity"/>
+      <point      
+        x = "2560"      
+        y = "640"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
         class = "com.android.tools.idea.editors.navigation.model.MenuState"      
         xmlResourceName = "stopwatch"/>
       <point      
-        x = "1760"      
-        y = "480"/>
+        x = "1920"      
+        y = "640"/>
     </statePointEntry>
   </locations>
 </navigationModel>
