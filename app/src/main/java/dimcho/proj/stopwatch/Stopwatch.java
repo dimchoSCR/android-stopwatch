@@ -1,9 +1,14 @@
 package dimcho.proj.stopwatch;
 
 import android.animation.LayoutTransition;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Gravity;
 import android.view.Menu;
@@ -23,11 +28,14 @@ public class Stopwatch extends ActionBarActivity {
     private Button lapButton;
     private TextView textView;
     private Timer timer;
+    private NotificationCompat.Builder builder;
+    private NotificationManager manager;
     private LayoutTransition transition;
     private LinearLayout linearLayout;
     private int currentTime = 0;
     private int lapTime = 0;
     private int lapCounter=0;
+    private int mId =1;
     private boolean lapViewExists;
     private boolean isButtonStartPressed = false;
 
@@ -44,7 +52,8 @@ public class Stopwatch extends ActionBarActivity {
     }
 
 
-    /*
+/* Handling the configuration change myself because of views inserted
+   during run time.(lapDisplay and imageView)
     @Override
     public void onSaveInstanceState(Bundle saveInstanceState){
         saveInstanceState.putInt("currentTime", currentTime);
@@ -69,7 +78,7 @@ public class Stopwatch extends ActionBarActivity {
         }
         super.onRestoreInstanceState(savedInstanceSate);
     }
-    */
+*/
 
     public void onSWatchStart(View view) {
         if (isButtonStartPressed) {
@@ -84,19 +93,21 @@ public class Stopwatch extends ActionBarActivity {
             lapButton.setText(R.string.btn_lap);
             lapButton.setEnabled(true);
 
+            // sets up an updatable notification
+            setUpNotification();
+
             timer = new Timer();
             timer.scheduleAtFixedRate(new TimerTask() {
                 @Override
                 public void run() {
                     runOnUiThread(new Runnable() {
+                        @Override
                         public void run() {
                             currentTime += 1;
                             lapTime += 1;
 
-                            // update ui
+                            //updates the ui
                             textView.setText(TimeFormatUtil.toDisplayString(currentTime));
-
-
                         }
                     });
                 }
@@ -105,6 +116,7 @@ public class Stopwatch extends ActionBarActivity {
     }
 
     public void onSWatchStop() {
+        timer.cancel();
         startButton.setBackgroundResource(R.drawable.btn_start_states);
         startButton.setText(R.string.btn_start);
         lapButton.setEnabled(true);
@@ -112,7 +124,6 @@ public class Stopwatch extends ActionBarActivity {
         lapButton.setText(R.string.btn_reset);
 
         isButtonStartPressed = false;
-        timer.cancel();
     }
 
     public void onSWatchReset() {
@@ -165,6 +176,35 @@ public class Stopwatch extends ActionBarActivity {
         }
     }
 
+    public void setUpNotification(){
+        builder=
+                new NotificationCompat.Builder(this)
+                .setSmallIcon(android.R.drawable.stat_notify_more)
+                .setContentTitle("Stopwatch running")
+                .setContentText("00:00");
+
+        Intent resultIntent = new Intent(this,Stopwatch.class);
+
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+        stackBuilder.addParentStack(Stopwatch.class);
+        stackBuilder.addNextIntent(resultIntent);
+
+        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(
+                0,
+                PendingIntent.FLAG_UPDATE_CURRENT
+        );
+        builder.setContentIntent(resultPendingIntent);
+
+        manager = (NotificationManager)
+                getSystemService(Context.NOTIFICATION_SERVICE);
+
+        // update notification text
+        builder.setContentText(TimeFormatUtil.toDisplayString(currentTime));
+        manager.notify(mId,builder.build());
+
+
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -185,4 +225,5 @@ public class Stopwatch extends ActionBarActivity {
         Intent intent = new Intent(this,HelpActivity.class);
         startActivity(intent);
     }
+
 }
