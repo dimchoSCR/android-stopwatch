@@ -34,8 +34,8 @@ public class Stopwatch extends ActionBarActivity {
     private LinearLayout linearLayout;
     private int currentTime = 0;
     private int lapTime = 0;
-    private int lapCounter=0;
-    private int mId =1;
+    private int lapCounter = 0;
+    private int mId = 1;
     private boolean lapViewExists;
     private boolean isButtonStartPressed = false;
 
@@ -93,7 +93,6 @@ public class Stopwatch extends ActionBarActivity {
             lapButton.setText(R.string.btn_lap);
             lapButton.setEnabled(true);
 
-            // sets up an updatable notification
             setUpNotification();
 
             timer = new Timer();
@@ -101,12 +100,18 @@ public class Stopwatch extends ActionBarActivity {
                 @Override
                 public void run() {
                     runOnUiThread(new Runnable() {
-                        @Override
                         public void run() {
                             currentTime += 1;
                             lapTime += 1;
 
-                            //updates the ui
+                            manager = (NotificationManager)
+                                    getSystemService(Context.NOTIFICATION_SERVICE);
+
+                            // update notification text
+                            builder.setContentText(TimeFormatUtil.toDisplayString(currentTime));
+                            manager.notify(mId, builder.build());
+
+                            // update ui
                             textView.setText(TimeFormatUtil.toDisplayString(currentTime));
                         }
                     });
@@ -116,7 +121,6 @@ public class Stopwatch extends ActionBarActivity {
     }
 
     public void onSWatchStop() {
-        timer.cancel();
         startButton.setBackgroundResource(R.drawable.btn_start_states);
         startButton.setText(R.string.btn_start);
         lapButton.setEnabled(true);
@@ -124,13 +128,16 @@ public class Stopwatch extends ActionBarActivity {
         lapButton.setText(R.string.btn_reset);
 
         isButtonStartPressed = false;
+        timer.cancel();
+        manager.cancel(mId);
     }
 
     public void onSWatchReset() {
         timer.cancel();
+        manager.cancel(mId);
         currentTime = 0;
         lapTime = 0;
-        lapCounter=0;
+        lapCounter = 0;
         textView.setText(TimeFormatUtil.toDisplayString(currentTime));
         lapButton.setEnabled(false);
         lapButton.setText(R.string.btn_lap);
@@ -144,15 +151,15 @@ public class Stopwatch extends ActionBarActivity {
     }
 
     public void onSWatchLap(View view) {
-        if(!isButtonStartPressed){
+        if (!isButtonStartPressed) {
             onSWatchReset();
-        }else {
+        } else {
             lapViewExists = true;
             lapCounter++;
 
             transition = new LayoutTransition();
-            transition.setAnimator(LayoutTransition.CHANGE_APPEARING,null);
-            transition.setStartDelay(LayoutTransition.APPEARING,0);
+            transition.setAnimator(LayoutTransition.CHANGE_APPEARING, null);
+            transition.setStartDelay(LayoutTransition.APPEARING, 0);
 
             linearLayout = (LinearLayout) findViewById(R.id.layout);
             linearLayout.setLayoutTransition(transition);
@@ -176,14 +183,17 @@ public class Stopwatch extends ActionBarActivity {
         }
     }
 
-    public void setUpNotification(){
-        builder=
+    public void setUpNotification() {
+        builder =
                 new NotificationCompat.Builder(this)
-                .setSmallIcon(android.R.drawable.stat_notify_more)
-                .setContentTitle("Stopwatch running")
-                .setContentText("00:00");
+                        .setSmallIcon(android.R.drawable.stat_notify_more)
+                        .setContentTitle("Stopwatch running")
+                        .setContentText("00:00")
+                        .setPriority(NotificationCompat.PRIORITY_MAX)
+                        .setOngoing(true);
 
-        Intent resultIntent = new Intent(this,Stopwatch.class);
+
+        Intent resultIntent = new Intent(this, Stopwatch.class);
 
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
         stackBuilder.addParentStack(Stopwatch.class);
@@ -195,14 +205,6 @@ public class Stopwatch extends ActionBarActivity {
         );
         builder.setContentIntent(resultPendingIntent);
 
-        manager = (NotificationManager)
-                getSystemService(Context.NOTIFICATION_SERVICE);
-
-        // update notification text
-        builder.setContentText(TimeFormatUtil.toDisplayString(currentTime));
-        manager.notify(mId,builder.build());
-
-
     }
 
     @Override
@@ -212,8 +214,8 @@ public class Stopwatch extends ActionBarActivity {
         return true;
     }
 
-    public boolean onOptionsItemSelected (MenuItem item){
-        switch(item.getItemId()){
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
             case R.id.action_help:
                 openHelp();
             default:
@@ -221,8 +223,8 @@ public class Stopwatch extends ActionBarActivity {
         }
     }
 
-    public void openHelp(){
-        Intent intent = new Intent(this,HelpActivity.class);
+    public void openHelp() {
+        Intent intent = new Intent(this, HelpActivity.class);
         startActivity(intent);
     }
 
