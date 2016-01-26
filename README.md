@@ -3,10 +3,11 @@ android-stopwatch
 
 Stopwatch application for android. 
 
-![Screen 1](screenshots/Stopwatch_screenshot_1.png)
-![Screen 2](screenshots/Stopwatch_screenshot_2.png)  
-![Screen 1 tablet](screenshots/Stopwatch_screenshot_tablet_1.png)
-![Screen 2 tablet](screenshots/Stopwatch_screenshot_tablet_2.png)
+<img src="screenshots/Screenshot_2016-01-26-19-59-49.png" alt="Screen 1" width="180px" height="320px">
+<img src="screenshots/Screenshot_2016-01-26-20-00-31.png" alt="Screen 2" width="180px" height="320px">
+<img src="screenshots/Screenshot_2016-01-26-20-01-13.png" alt="Screen 3" width="180px" height="320px">
+<img src="screenshots/Screenshot_2016-01-26-20-26-10.png" alt="Screen 1 tablet" width="380px" height="240px">
+<img src="screenshots/Screenshot_2016-01-26-20-26-30.png" alt="Screen 2 tablet" width="380px" height="240px">
 
 It uses a thread so the TextView can update every 10 hundredths of a secound.
 #Download
