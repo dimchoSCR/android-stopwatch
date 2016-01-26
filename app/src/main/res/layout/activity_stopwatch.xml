@@ -9,7 +9,7 @@
         android:id="@+id/stopwatch_view"
         android:layout_width="fill_parent"
         android:layout_height="90dp"
-        android:background="@drawable/stopwatch_background"
+        android:background="@drawable/s_view"
         android:gravity="center"
         android:text="@string/display_stopwatch"
         android:textSize="@dimen/font_size" />

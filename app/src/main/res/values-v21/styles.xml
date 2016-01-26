@@ -1,8 +1,8 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Material">
-        <item name="android:textColor">@android:color/black</item>
+    <style name="AppTheme" parent="Theme.AppCompat">
+        <item name="android:textColor">@color/md_black_1000</item>
     </style>
 
 </resources>

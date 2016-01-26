@@ -134,7 +134,6 @@ public class Stopwatch extends ActionBarActivity {
 
     public void onSWatchReset() {
         timer.cancel();
-        manager.cancel(mId);
         currentTime = 0;
         lapTime = 0;
         lapCounter = 0;
@@ -186,23 +185,29 @@ public class Stopwatch extends ActionBarActivity {
     public void setUpNotification() {
         builder =
                 new NotificationCompat.Builder(this)
-                        .setSmallIcon(android.R.drawable.stat_notify_more)
+                        .setSmallIcon(R.drawable.ic_timelapse_white_18dp)
                         .setContentTitle("Stopwatch running")
-                        .setContentText("00:00")
+                        .setContentText("00:00:00")
                         .setPriority(NotificationCompat.PRIORITY_MAX)
                         .setOngoing(true);
 
 
         Intent resultIntent = new Intent(this, Stopwatch.class);
 
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-        stackBuilder.addParentStack(Stopwatch.class);
-        stackBuilder.addNextIntent(resultIntent);
+        //TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+        //stackBuilder.addParentStack(Stopwatch.class);
+        //stackBuilder.addNextIntent(resultIntent);
 
-        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(
+
+
+        /*PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(
                 0,
                 PendingIntent.FLAG_UPDATE_CURRENT
         );
+        */
+
+        PendingIntent resultPendingIntent = PendingIntent.getActivity(this, 0, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
         builder.setContentIntent(resultPendingIntent);
 
     }
