@@ -3,8 +3,8 @@ android-stopwatch
 
 Stopwatch application for android. 
 
-<img src="screenshots/Screenshot_2016-01-26-19-59-49.png" alt="Screen 1" width="180px" height="320px">
-<img src="screenshots/Screenshot_2016-01-26-20-00-31.png" alt="Screen 2" width="180px" height="320px">
+<img src="screenshots/Screenshot_1529232679.png" alt="Screen 1" width="180px" height="320px">
+<img src="screenshots/Screenshot_1529232941.png" alt="Screen 2" width="180px" height="320px">
 <img src="screenshots/Screenshot_2016-01-26-20-01-13.png" alt="Screen 3" width="180px" height="320px">
 <img src="screenshots/Screenshot_2016-01-26-20-26-10.png" alt="Screen 1 tablet" width="380px" height="240px">
 <img src="screenshots/Screenshot_2016-01-26-20-26-30.png" alt="Screen 2 tablet" width="380px" height="240px">
