@@ -116,7 +116,7 @@ public class Stopwatch extends ActionBarActivity {
                         }
                     });
                 }
-            }, 0, 100);
+            }, 0, 10);
         }
     }
 
