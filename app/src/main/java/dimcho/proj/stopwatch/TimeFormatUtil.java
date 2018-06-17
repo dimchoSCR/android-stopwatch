@@ -6,7 +6,7 @@ public class TimeFormatUtil {
 	
 	public static String toDisplayString(int timeHundreds){
 		int hundreds,seconds,minutes;
-		// Used to add a '0' at the end of .3 (a one digit number) so it becomes .30
+		// Used to add a '0' in the .03(a one digit number) so it becomes .03
 		// So if the result of timeHundreds%100 equals a one digit number add 0
 		// to the end of the time string
 		// Avoids unnecessary if statements
@@ -32,8 +32,6 @@ public class TimeFormatUtil {
 				formattedMinutes+":"+
 				formattedSeconds+"."+
 				formatterArrayMillis[millSecDigitsCnt - 1];
-		Log.wtf("A", timeString);
-		
 		
 		return timeString;
 	}
