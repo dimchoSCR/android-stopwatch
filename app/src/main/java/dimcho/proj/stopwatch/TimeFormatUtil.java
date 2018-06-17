@@ -1,5 +1,7 @@
 package dimcho.proj.stopwatch;
 
+import android.util.Log;
+
 public class TimeFormatUtil {
 	
 	public static String toDisplayString(int timeHundreds){
@@ -13,7 +15,7 @@ public class TimeFormatUtil {
 
 		hundreds=timeHundreds%100;
 		String milliSecStr = Integer.toString(hundreds);
-		formatterArrayMillis[0] = milliSecStr + "0";
+		formatterArrayMillis[0] = "0" + milliSecStr;
 		formatterArrayMillis[1] = milliSecStr;
 
 		seconds=(timeHundreds/=100)%60;
@@ -30,6 +32,7 @@ public class TimeFormatUtil {
 				formattedMinutes+":"+
 				formattedSeconds+"."+
 				formatterArrayMillis[millSecDigitsCnt - 1];
+		Log.wtf("A", timeString);
 		
 		
 		return timeString;
